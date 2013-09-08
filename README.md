@@ -23,3 +23,6 @@ To be able to use the PayPal plugin component for CakePHP you will need to own a
 *   Ensure the plugin is loaded in `app/Config/bootstrap.php` by calling `CakePlugin::load('DebugKit', array('bootstrap' = > true));`
 *   Include the PayPal component in your controller `public $components = array('PayPal.PayPal');`
 
+PHP Configuration
+-----------------
+In order to communicate with PayPal's REST APIs, the component relies on secure socket connection to their services. This requires the OpenSSL extension for PHP to be enabled. This is usually released with most builds of PHP and can be enabled by removing the semicolon (;) from in front of `;extension=php_openssl.dll` in your php.ini file. Because in this situation you will not be serving secure content and only consuming, you don't have to setup any certificates.
