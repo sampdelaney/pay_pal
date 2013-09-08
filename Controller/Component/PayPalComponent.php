@@ -85,18 +85,19 @@ class PayPalComponent extends Component
         // sign the request with the access token
         $this->_signApiCallRequest($createPaymentRequest);
         // add redirect urls
-        if(is_array($returnUrl)){
-            $createPaymentRequest['body']['redirect_urls']['return_url'] = Router::url($returnUrl, true);
+        if(is_array(Configure::read('PayPal.returnUrl'))){
+            $createPaymentRequest['body']['redirect_urls']['return_url'] = Router::url(Configure::read('PayPal.returnUrl'), true);
         }else{
-            $createPaymentRequest['body']['redirect_urls']['return_url'] = $returnUrl;
+            $createPaymentRequest['body']['redirect_urls']['return_url'] = Configure::read('PayPal.returnUrl');
         }
-        if(is_array($cancelUrl)){
-            $createPaymentRequest['body']['redirect_urls']['cancel_url'] = Router::url($cancelUrl, true);
+        if(is_array(Configure::read('PayPal.cancelUrl'))){
+            $createPaymentRequest['body']['redirect_urls']['cancel_url'] = Router::url(Configure::read('PayPal.cancelUrl'), true);
         }else{
-            $createPaymentRequest['body']['redirect_urls']['cancel_url'] = $cancelUrl;
+            $createPaymentRequest['body']['redirect_urls']['cancel_url'] = Configure::read('PayPal.cancelUrl');
         }
         // modify the api call
         $createPaymentRequest['body']['transactions'] = $transactions;
+
         // json encode the transactions
         $createPaymentRequest['body'] = json_encode($createPaymentRequest['body']);
         // make the call

@@ -11,5 +11,7 @@ Configure::write('PayPal', array(
     'endpoint' => 'api.sandbox.paypal.com',
     'version' => 1,
     'applicationClientId' => 'IXwDJZmjcYejw1lzJrBLQdkaxeL3UPYhEUUosIDUcXllqcZGSoeZb1q89c1r',
-    'applicationSecret' => 'd1Zhd7P3Ex315e2Es67I51UO12n85l31S149371Z84C6Z1sqZSJ4za4nML14'
+    'applicationSecret' => 'd1Zhd7P3Ex315e2Es67I51UO12n85l31S149371Z84C6Z1sqZSJ4za4nML14',
+    'returnUrl' => array(),
+    'cancelUrl' => array()
 ));
